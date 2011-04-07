@@ -1,0 +1,23 @@
+{
+  "name": "request-plus",
+  "description": "sugar coating mikeal's `request`: gzip, charset, cookies",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/clement/request-plus.git"
+  },
+  "author": "Clément Nodet <clement.nodet@gmail.com> (http://clementnodet.com)",
+  "main": "request-plus.js",
+  "directories": {
+    "lib": "."
+  },
+  "engines": {
+    "node": "0.4.x"
+  },
+  "dependencies": {
+    "request": "~1.9.5",
+    "compressor": "~0.1.10",
+    "iconv": "~1.1.0",
+    "buffertools": "1.x.x"
+  } 
+}
