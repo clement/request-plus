@@ -11,7 +11,7 @@ var gzipCallback = function (next) {
             var unzipper = new compress.GunzipStream
               , deflated = new Buffer(0)
 
-            unzipper.on('data', function (data) { deflated = deflated.concat(data) })
+            unzipper.on('data', function (data) { deflated = buffertools.concat(deflated, data) })
                     .on('error', function (err) { next.call(this, err, resp, body) })
                     .on('end', function () { next.call(this, err, resp, deflated) })
             unzipper.write(body)
@@ -55,7 +55,7 @@ module.exports = function requestPlus(opts, cb) {
 
     return request(opts, function (err, resp) {
         if (!err && resp) {
-            resp.on('data', function (data) { bodyBuf = bodyBuf.concat(data) })
+            resp.on('data', function (data) { bodyBuf = buffertools.concat(bodyBuf, data) })
                 .on('end', function () { cb.call(this, err, resp, bodyBuf) })
         }
         else {
